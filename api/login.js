@@ -17,7 +17,7 @@ const handler = async (req, res) => {
         }
 
         const user = response.users[0]
-        const isPasswordMatching = bcrypt.compare(data.password, user.password)
+        const isPasswordMatching = await bcrypt.compare(data.password, user.password)
 
         if (!isPasswordMatching) {
             return res.status(400).json({
